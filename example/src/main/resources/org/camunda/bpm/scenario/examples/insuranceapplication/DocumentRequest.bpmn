@@ -3,7 +3,7 @@
   <bpmn:collaboration id="Collaboration_0liisio">
     <bpmn:participant id="Participant_012xlj2" name="Document Request" processRef="DocumentRequest" />
   </bpmn:collaboration>
-  <bpmn:process id="DocumentRequest" name="Document Request" isExecutable="true">
+  <bpmn:process id="DocumentRequest" name="Document Request" isExecutable="true" camunda:historyTimeToLive="99">
     <bpmn:startEvent id="StartEvent_1" name="Document&#10;required">
       <bpmn:outgoing>SequenceFlow_0d7dzn0</bpmn:outgoing>
     </bpmn:startEvent>

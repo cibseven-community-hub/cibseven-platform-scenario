@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_0c2j6f0" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.6.0">
-  <bpmn:process id="DinnerWithCucumber" isExecutable="true">
+  <bpmn:process id="DinnerWithCucumber" isExecutable="true" camunda:historyTimeToLive="99">
     <bpmn:startEvent id="MealIsUpcomingStartEvent" name="Meal is&#10;upcoming" camunda:asyncBefore="true">
       <bpmn:outgoing>Flow_0hn49kw</bpmn:outgoing>
     </bpmn:startEvent>

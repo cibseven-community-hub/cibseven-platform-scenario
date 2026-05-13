@@ -3,7 +3,7 @@
   <bpmn2:collaboration id="Collaboration_1u35ano">
     <bpmn2:participant id="Participant_0477s11" name="Insurance Application" processRef="InsuranceApplication" />
   </bpmn2:collaboration>
-  <bpmn2:process id="InsuranceApplication" name="Insurance Application" isExecutable="true">
+  <bpmn2:process id="InsuranceApplication" name="Insurance Application" isExecutable="true" camunda:historyTimeToLive="99">
     <bpmn2:startEvent id="StartEventApplicationReceived" name="Application&#10;received" camunda:asyncAfter="true">
       <bpmn2:extensionElements>
         <camunda:properties>
