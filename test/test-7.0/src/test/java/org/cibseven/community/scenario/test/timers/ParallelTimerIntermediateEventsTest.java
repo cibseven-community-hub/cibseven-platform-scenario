@@ -9,6 +9,8 @@ import org.cibseven.community.scenario.delegate.ProcessInstanceDelegate;
 import org.cibseven.community.scenario.delegate.TaskDelegate;
 import org.cibseven.community.scenario.test.AbstractTest;
 import org.junit.Test;
+import static org.assertj.core.api.Assertions.assertThat;
+
 
 import static org.cibseven.bpm.engine.test.assertions.ProcessEngineTests.assertThat;
 import static org.mockito.Mockito.*;

@@ -10,6 +10,7 @@ import org.cibseven.community.scenario.test.AbstractTest;
 import org.junit.Test;
 
 import static org.mockito.Mockito.*;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.cibseven.bpm.engine.test.assertions.ProcessEngineTests.*;
 
 /**
