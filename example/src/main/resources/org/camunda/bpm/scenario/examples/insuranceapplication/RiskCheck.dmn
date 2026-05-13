@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="http://www.omg.org/spec/DMN/20151101/dmn.xsd" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/1.0" id="Definitions_1lh3iub" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="3.3.2">
-  <decision id="RiskCheck" name="Risk Check">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/1.0" id="Definitions_1lh3iub" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="3.3.2">
+  <decision id="RiskCheck" name="Risk Check" camunda:historyTimeToLive="99">
     <decisionTable id="decisionTable" hitPolicy="COLLECT">
       <input id="input1" label="Age">
         <inputExpression id="inputExpression1" typeRef="integer">        <text>applicantAge</text>
