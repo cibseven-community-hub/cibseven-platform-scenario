@@ -3,8 +3,8 @@
 
     <parent>
         <artifactId>cibseven-platform-scenario-root</artifactId>
-        <groupId>org.cibseven.community.scenario</groupId>
-        <version>2.0.0</version>
+        <groupId>org.cibseven.community.scenario.project</groupId>
+        <version>2.0.0-SNAPSHOT</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
