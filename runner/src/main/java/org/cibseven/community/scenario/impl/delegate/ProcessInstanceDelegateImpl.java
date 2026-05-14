@@ -78,4 +78,9 @@ public class ProcessInstanceDelegateImpl extends AbstractDelegate<ProcessInstanc
     return delegate.getTenantId();
   }
 
+  @Override
+  public String getProcessDefinitionKey() {
+    return delegate.getProcessDefinitionKey();
+  }
+
 }

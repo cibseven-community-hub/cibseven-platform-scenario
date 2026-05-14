@@ -74,4 +74,8 @@ public abstract class AbstractExternalTaskDelegate extends WaitstateExecutable<E
     return delegate.getExtensionProperties();
   }
 
+  public Date getCreateTime() {
+    return delegate.getCreateTime();
+  }
+
 }

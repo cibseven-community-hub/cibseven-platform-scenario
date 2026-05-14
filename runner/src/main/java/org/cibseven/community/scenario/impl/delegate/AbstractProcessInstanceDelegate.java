@@ -47,4 +47,8 @@ public abstract class AbstractProcessInstanceDelegate extends WaitstateExecutabl
     return delegate.getTenantId();
   }
 
+  public String getProcessDefinitionKey() {
+    return delegate.getProcessDefinitionKey();
+  }
+
 }

@@ -3,6 +3,7 @@ package org.cibseven.community.scenario.impl.delegate;
 import org.cibseven.bpm.engine.task.DelegationState;
 import org.cibseven.community.scenario.delegate.MockedCallActivityDelegate;
 import org.cibseven.community.scenario.delegate.TaskDelegate;
+import org.cibseven.bpm.engine.form.CamundaFormRef;
 
 import java.util.Date;
 
@@ -147,6 +148,30 @@ public abstract class AbstractMockedCallActivityDelegate implements MockedCallAc
 
   public String getExecutionId() {
     return delegate.getExecutionId();
+  }
+
+  public boolean hasComment() {
+    return delegate.hasComment();
+  }
+
+  public boolean hasAttachment() {
+    return delegate.hasAttachment();
+  }
+
+  public String getTaskState() {
+    return delegate.getTaskState();
+  }
+
+  public void setTaskState(String taskState) {
+    delegate.setTaskState(taskState);
+  }
+  
+  public CamundaFormRef getCamundaFormRef() {
+    return delegate.getCamundaFormRef();
+  }
+
+  public Date getLastUpdated() {
+    return delegate.getLastUpdated();
   }
 
 }
