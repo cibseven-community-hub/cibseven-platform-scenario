@@ -233,6 +233,12 @@ pipeline {
     }
 }
 
+// creates pseudo-unique folder for a jobName
+def getJobFolder(String jobName) {
+    String baseName = jobName.split('/') ? jobName.split('/').last() : ""
+    String pathHash = String.format("%04X", (0xFFFF & jobName.hashCode()))
+    return "${baseName}_${pathHash}".replaceAll("[^a-zA-Z0-9._-]", "_")
+}
 
 def moveMavenRepoFromPool(String localRepoPath) {
     // Try to find and move from the pool: preferably a folder with the same name as the local repo, otherwise the oldest existing folder
