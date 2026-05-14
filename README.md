@@ -1,12 +1,12 @@
-<a href="https://travis-ci.com/github/camunda-community-hub/camunda-platform-scenario" target="_blank"><img src="https://travis-ci.com/camunda-community-hub/camunda-platform-scenario.svg?branch=master" align="right"></img></a>
-<a href="https://maven-badges.herokuapp.com/maven-central/org.cibseven.community.scenario/camunda-platform-scenario-runner" target="_blank"><img src="https://maven-badges.herokuapp.com/maven-central/org.cibseven.community.scenario/camunda-platform-scenario-runner/badge.svg?style=social" align="right"></img></a>
-<a href="https://github.com/camunda-community-hub/community" target="_blank"><img src="https://img.shields.io/badge/Community%20Extension-An%20open%20source%20community%20maintained%20project-FF4700"></img></a>
+[![CIB seven 2.1.0](https://img.shields.io/badge/CIB%20seven-2.1.0-orange.svg)](https://docs.cibseven.org/manual/2.1/)
+[![Maven Central](https://img.shields.io/maven-central/v/org.cibseven.community/cibseven-bpm-jgiven?label=Maven%20Central)](https://central.sonatype.com/artifact/org.cibseven.community/cibseven-bpm-jgiven)
 
-# <img src="https://avatars.githubusercontent.com/u/2443838?s=23&v=4" width="23" height="23"></img>&nbsp;Camunda Platform <strong>Scenario</strong><a href="https://maven-badges.herokuapp.com/maven-central/org.cibseven.community.scenario/camunda-platform-scenario-runner"></a>
 
-<img src="https://github.com/camunda-community-hub/camunda-platform-scenario/raw/master/doc/img/clapboard.jpg" align="right" width="400"></img>
+# CIB seven Platform <strong>Scenario</strong><a href="https://maven-badges.herokuapp.com/maven-central/org.cibseven.community.scenario/camunda-platform-scenario-runner"></a>
 
-This community extension to Camunda Platform enables you to write **robust test suites** for process models. The larger
+<img src="https://github.com/cibseven-community-hub/cibseven-platform-scenario/raw/master/doc/img/clapboard.jpg" align="right" width="400"></img>
+
+This community extension to CIB seven Platform enables you to write **robust test suites** for process models. The larger
 your process models, the more often you change them, the more value you will get out of using it. Look at a piece of
 test code:
 
@@ -37,7 +37,7 @@ in charge of the work needs to be reminded daily to actually do it! :smile: In o
 of processes, the library allows to "defer" actions for specified time periods. The following test code snippet verifies
 the example case, that the colleague should be reminded twice, in case he needs 2 1/2 days to complete the work.
 
-<img src="https://github.com/camunda-community-hub/camunda-platform-scenario/raw/master/doc/img/readme-process.png" width="400" align="left"/>
+<img src="https://github.com/cibseven-community-hub/cibseven-platform-scenario/raw/master/doc/img/readme-process.png" width="400" align="left"/>
 
 ```groovy
 @Test
@@ -59,15 +59,15 @@ activities**.
 
 ## Our motivations
 
-**Camunda Platform Scenario** enables much **faster process development**, removing the need to adapt unit test suites
+**CIB seven Platform Scenario** enables much **faster process development**, removing the need to adapt unit test suites
 for large executable models over and over again. When using it we experience that just those tests need to break that we
 want to break: when we change the "business relevant" aspect under test or **what** the process achieves. However, our
 test suites do not break at all when we just refactor a model's inner logic or **how** we achieve the desired business
 semantics.
 
-Furthermore, _Camunda Platform Scenario_ enables **realistic unit testing** with respect to **time-related** process
+Furthermore, _CIB seven Platform Scenario_ enables **realistic unit testing** with respect to **time-related** process
 behaviour: by deferring actions and "fast-forwarding" test scenarios into their "process future", we can check how
-several processes and call activities behave together. We however always remain in the driver's seat: _Camunda Platform
+several processes and call activities behave together. We however always remain in the driver's seat: _CIB seven Platform
 Scenario_ works in a single-treaded, easily mockable and controllable unit test environment.
 
 ## Show me more code!
@@ -124,15 +124,15 @@ execution with the `ProcessScenario` interface provided by us.
 
 ## An extensive example: applying for insurance with "Camundanzia"! :smile:
 
-The following process scenario has been executed by means of _Camunda Platform Scenario_ and has been visualised with
-the [Camunda Process Test Coverage](https://github.com/camunda-community-hub/camunda-bpm-process-test-coverage) library:
+The following process scenario has been executed by means of _CIB seven Platform Scenario_ and has been visualised with
+the [CIB seven Process Test Coverage](https://github.com/cibseven-community-hub/cibseven-process-test-coverage) library:
 
-![](https://github.com/camunda-community-hub/camunda-platform-scenario/raw/master/doc/img/insurance-application.png)
+![](https://github.com/cibseven-community-hub/cibseven-platform-scenario/raw/master/doc/img/insurance-application.png)
 
 Note that we see here a call activity `Document Request` invoked by an event sub process. Why does our scenario run show
 this path? Who takes care of the call activity's details? And why does the boundary timer `2 days` actually trigger?
 Please have a look at
-the [few lines of test code](https://github.com/camunda-community-hub/camunda-platform-scenario/blob/master/example/src/test/java/org/camunda/bpm/scenario/examples/insuranceapplication/InsuranceApplicationProcessTest.java#L247)
+the [few lines of test code](https://github.com/cibseven-community-hub/cibseven-platform-scenario/blob/main/example/src/test/java/org/cibseven/bpm/scenario/examples/insuranceapplication/InsuranceApplicationProcessTest.java#L247)
 necessary to create this particular scenario!
 
 ## Highlights
@@ -143,40 +143,30 @@ necessary to create this particular scenario!
 1. Execute **several process instances** alongside each other including whole **trees of call activities**
 1. Enable realistic **time-related** unit testing by **deferring** waitstate actions for a period of time
 1. Create a **realistic history** by defining time needed for all actions and "fast-forwarding" into the future
-1. Use scenarios with the classic [**Camunda Platform Assert**](https://github.com/camunda/camunda-bpm-assert) to verify
+1. Use scenarios with the classic [**CIB seven Platform Assert**](https://github.com/cibseven/cibseven/tree/main/test-utils/assert) to verify
    current runtime state inside your waitstate actions
 
-## <a href="https://travis-ci.com/github/camunda-community-hub/camunda-platform-scenario" target="_blank"><img src="https://travis-ci.com/camunda-community-hub/camunda-platform-scenario.svg?branch=master" align="right"/></a></a>Just start to use it! Or are you too busy?
+## Just start to use it! Or are you too busy?
 
-Camunda Platform Scenario is used in real life projects since years and works
-with **all versions of Camunda Platform** since 7.0 up to the most recent and *all the Java versions* (8, 11) relevant for Camunda Platform installations out there. This is continuously verified by executing more than 200 test cases
-against a [travis ci test matrix](https://travis-ci.com/camunda-community-hub/camunda-platform-scenario).
+CIB seven Platform Scenario is used in real life projects since years and works
+with **all versions of CIB seven Platform** since 1.0 up to the most recent and *all the Java versions* (11, 17) relevant for CIB seven Platform installations out there.
 
-![](https://github.com/camunda-community-hub/camunda-platform-scenario/raw/master/doc/img/are-you-too-busy.png)
+![](https://github.com/cibseven-community-hub/cibseven-platform-scenario/raw/master/doc/img/are-you-too-busy.png)
 <p align="right"><sup>Credits to https://hakanforss.wordpress.com</sup></p>
 
 ## Get started in _3 simple steps_!
 
 **1.** Add a maven **test dependency** to the last stable 1.x release or the upcoming 2.x release to your project:
 
-**Stable version 1.x**
+**Heads up!:** camunda-bpm-assert-scenario was deprecated in favour of camunda-platform-scenario-runner
 
-```xml  
-<dependency>
-    <groupId>org.cibseven.community.extension</groupId>
-    <artifactId>cibseven-bpm-assert-scenario</artifactId>
-    <version>1.1.1</version>
-    <scope>test</scope>
-</dependency>
-```
-
-**or upcoming version 2.x**: <a href="https://maven-badges.herokuapp.com/maven-central/org.cibseven.community.scenario/camunda-platform-scenario-runner"><img src="https://maven-badges.herokuapp.com/maven-central/org.cibseven.community.scenario/camunda-platform-scenario-runner/badge.svg?style=social" style="vertical-align: middle" align="right"></img></a>
+**Stable version 2.0.0**
 
 ```xml  
 <dependency>
     <groupId>org.cibseven.community.scenario</groupId>
     <artifactId>cibseven-platform-scenario-runner</artifactId>
-    <version><!-- See version badge above -->></version>
+    <version>2.0.0</version>
     <scope>test</scope>
 </dependency>
 ```
@@ -184,7 +174,7 @@ against a [travis ci test matrix](https://travis-ci.com/camunda-community-hub/ca
 **2.** Add a mocked `ProcessScenario` to your test class
 
 Create your test case just as described in
-the [Camunda Platform Testing Guide](https://docs.camunda.org/manual/latest/user-guide/testing/). Then add Camunda Platform Scenario Runner by mocking its main interface - the example shown here makes use of Mockito:
+the [CIB seven Platform Testing Guide](https://docs.cibseven.org/manual/latest/user-guide/testing/). Then add CIB seven Platform Scenario Runner by mocking its main interface - the example shown here makes use of Mockito:
 
 ```java
 ProcessScenario insuranceApplication = mock(ProcessScenario.class);
@@ -209,7 +199,7 @@ public void testHappyPath() {
 
 <img src="https://camo.githubusercontent.com/5c81e269a45d0fd7bb672d8614240ea530d8bf5819a206c7aa9f05d6c78444fd/687474703a2f2f63616d756e64612e6769746875622e696f2f63616d756e64612d62706d2d6173736572742f7265736f75726365732f696d616765732f677265656e2d6261722e706e67" align="right"></img> Green bar?
 
-Congrats! You are successfully using Camunda Platform Scenario.
+Congrats! You are successfully using CIB seven Platform Scenario.
 
 ## Add extensive logging to your tests
 
@@ -252,10 +242,7 @@ Whenever the scenario fast-forwards in time, the log output moves a bit to the r
 ## Further Resources
 
 * [Maintenance](https://plexiti.com/)
-* [Issue Tracker](https://github.com/camunda-community-hub/camunda-platform-scenario/issues)
-* [Roadmap](https://github.com/camunda-community-hub/camunda-platform-scenario/issues/milestones?state=open&with_issues=no)
-* [Download](https://github.com/camunda-community-hub/camunda-platform-scenario/releases)
-* [Continuous Integration](https://travis-ci.com/github/camunda-community-hub/camunda-platform-scenario)
+* [Issue Tracker](https://github.com/cibseven-community-hub/cibseven-platform-scenario/issues)
 * [Blog](https://medium.com/plexiti)
 
 ## Maintenance &amp; License
