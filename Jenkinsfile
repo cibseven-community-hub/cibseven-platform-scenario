@@ -231,31 +231,32 @@ pipeline {
             }
         }
     }
-    
-    def moveMavenRepoFromPool(String localRepoPath) {
-        // Try to find and move from the pool: preferably a folder with the same name as the local repo, otherwise the oldest existing folder
-        echo "Find a suitable template in the pool and move it to the local repo path: '${localRepoPath}'"
-        if (localRepoPath != null && localRepoPath.endsWith(getJobFolder("${JOB_NAME}"))) {
-            String baseDir = localRepoPath.split('/').last()
-            String poolDir = localRepoPath.substring(0, localRepoPath.lastIndexOf('/')) + "/.pool"
-            String poolItemOwn = poolDir + "/" + baseDir
-            String poolItemAny = sh(script: "find ${poolDir} -maxdepth 1 -mindepth 1 -type d -printf '%T+\\t%p\\n' | sort | head -n 1 | cut -f2-", returnStdout: true).trim()
-            // use already existing repo or move a repo template from the pool, prefer own, fail if not successful: don't fall to the long-time repo creation
-            if (poolItemAny != null && !poolItemAny.isEmpty()) {
-               sh "[ -e '${localRepoPath}' ] || mv -v '${poolItemOwn}' '${localRepoPath}' || mv -v '${poolItemAny}' '${localRepoPath}'"
-               sh "touch -c '${localRepoPath}'"
-            }
-            else {
-               echo "WARNING: no suitable repo is found in the pool: will create a new one from scratch. A very long build is expected !!!"
-            }
+}
+
+
+def moveMavenRepoFromPool(String localRepoPath) {
+    // Try to find and move from the pool: preferably a folder with the same name as the local repo, otherwise the oldest existing folder
+    echo "Find a suitable template in the pool and move it to the local repo path: '${localRepoPath}'"
+    if (localRepoPath != null && localRepoPath.endsWith(getJobFolder("${JOB_NAME}"))) {
+        String baseDir = localRepoPath.split('/').last()
+        String poolDir = localRepoPath.substring(0, localRepoPath.lastIndexOf('/')) + "/.pool"
+        String poolItemOwn = poolDir + "/" + baseDir
+        String poolItemAny = sh(script: "find ${poolDir} -maxdepth 1 -mindepth 1 -type d -printf '%T+\\t%p\\n' | sort | head -n 1 | cut -f2-", returnStdout: true).trim()
+        // use already existing repo or move a repo template from the pool, prefer own, fail if not successful: don't fall to the long-time repo creation
+        if (poolItemAny != null && !poolItemAny.isEmpty()) {
+            sh "[ -e '${localRepoPath}' ] || mv -v '${poolItemOwn}' '${localRepoPath}' || mv -v '${poolItemAny}' '${localRepoPath}'"
+            sh "touch -c '${localRepoPath}'"
+        }
+        else {
+            echo "WARNING: no suitable repo is found in the pool: will create a new one from scratch. A very long build is expected !!!"
         }
     }
+}
 
-    def moveMavenRepoToPool(String localRepoPath) {
-        echo "Move local repo '${localRepoPath}' back to the pool or delete it if the movement fails"
-            if (localRepoPath != null && localRepoPath.endsWith(getJobFolder("${JOB_NAME}"))) {
-               String poolDir = localRepoPath.substring(0, localRepoPath.lastIndexOf('/')) + "/.pool"
-               sh "[ -e '${localRepoPath}' ] && rm -rf '${localRepoPath}/org/cibseven' && mv -v '${localRepoPath}' '${poolDir}/' || rm -rf '${localRepoPath}'"
-        }
+def moveMavenRepoToPool(String localRepoPath) {
+    echo "Move local repo '${localRepoPath}' back to the pool or delete it if the movement fails"
+    if (localRepoPath != null && localRepoPath.endsWith(getJobFolder("${JOB_NAME}"))) {
+        String poolDir = localRepoPath.substring(0, localRepoPath.lastIndexOf('/')) + "/.pool"
+        sh "[ -e '${localRepoPath}' ] && rm -rf '${localRepoPath}/org/cibseven' && mv -v '${localRepoPath}' '${poolDir}/' || rm -rf '${localRepoPath}'"
     }
 }
