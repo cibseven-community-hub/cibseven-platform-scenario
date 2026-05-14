@@ -3,7 +3,7 @@
 
     <parent>
         <artifactId>cibseven-platform-scenario-root</artifactId>
-        <groupId>org.cibseven.community.scenario</groupId>
+        <groupId>org.cibseven.community.scenario.project</groupId>
         <version>2.0.0</version>
     </parent>
 
