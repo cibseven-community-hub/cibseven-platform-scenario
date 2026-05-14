@@ -2,15 +2,15 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <parent>
-        <artifactId>camunda-platform-scenario-root</artifactId>
-        <groupId>org.camunda.bpm.extension.scenario.project</groupId>
+        <artifactId>cibseven-platform-scenario-root</artifactId>
+        <groupId>org.cibseven.community.scenario.project</groupId>
         <version>2.0.0-SNAPSHOT</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.camunda.bpm.extension.scenario</groupId>
-    <artifactId>camunda-platform-scenario-report</artifactId>
+    <groupId>org.cibseven.community.scenario</groupId>
+    <artifactId>cibseven-platform-scenario-report</artifactId>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
@@ -20,15 +20,15 @@
     <dependencies>
 
         <dependency>
-            <groupId>org.camunda.bpm</groupId>
-            <artifactId>camunda-engine</artifactId>
-            <version>7.15.0</version> <!-- compile against explicitly set version -->
+            <groupId>org.cibseven.bpm</groupId>
+            <artifactId>cibseven-engine</artifactId>
+            <version>${project.version}</version> <!-- compile against explicitly set version -->
             <scope>provided</scope>
         </dependency>
 
         <dependency>
-            <groupId>org.camunda.bpm.extension.scenario</groupId>
-            <artifactId>camunda-platform-scenario-runner</artifactId>
+            <groupId>org.cibseven.community.scenario</groupId>
+            <artifactId>cibseven-platform-scenario-runner</artifactId>
             <scope>test</scope>
         </dependency>
 
@@ -53,8 +53,8 @@
         </dependency>
 
         <dependency>
-            <groupId>org.camunda.bpm.extension</groupId>
-            <artifactId>camunda-bpm-junit5</artifactId>
+            <groupId>org.cibseven.bpm</groupId>
+            <artifactId>cibseven-bpm-junit5</artifactId>
             <scope>provided</scope>
         </dependency>
 

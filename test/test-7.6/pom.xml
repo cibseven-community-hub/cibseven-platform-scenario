@@ -3,35 +3,35 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>camunda-platform-scenario-test-7.6</artifactId>
+    <artifactId>cibseven-platform-scenario-test-7.6</artifactId>
 
     <properties>
         <camunda-platform-version>7.6.0</camunda-platform-version>
     </properties>
 
     <parent>
-        <groupId>org.camunda.bpm.extension.scenario.project</groupId>
-        <artifactId>camunda-platform-scenario-test</artifactId>
+        <groupId>org.cibseven.community.scenario.project</groupId>
+        <artifactId>cibseven-platform-scenario-test</artifactId>
         <version>2.0.0-SNAPSHOT</version>
     </parent>
 
     <dependencies>
 
         <dependency>
-            <groupId>org.camunda.bpm.extension.scenario</groupId>
-            <artifactId>camunda-platform-scenario-runner</artifactId>
+            <groupId>org.cibseven.community.scenario</groupId>
+            <artifactId>cibseven-platform-scenario-runner</artifactId>
             <scope>test</scope>
         </dependency>
 
         <dependency>
-            <groupId>org.camunda.bpm.extension.scenario</groupId>
-            <artifactId>camunda-platform-scenario-report</artifactId>
+            <groupId>org.cibseven.community.scenario</groupId>
+            <artifactId>cibseven-platform-scenario-report</artifactId>
             <scope>test</scope>
         </dependency>
 
         <dependency>
-            <groupId>org.camunda.bpm.extension.scenario</groupId>
-            <artifactId>camunda-platform-scenario-cucumber</artifactId>
+            <groupId>org.cibseven.community.scenario</groupId>
+            <artifactId>cibseven-platform-scenario-cucumber</artifactId>
             <scope>test</scope>
         </dependency>
 

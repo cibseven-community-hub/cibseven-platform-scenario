@@ -3,16 +3,16 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans   http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <bean id="processEngineConfiguration"
-          class="org.camunda.bpm.engine.impl.cfg.StandaloneInMemProcessEngineConfiguration">
+          class="org.cibseven.bpm.engine.impl.cfg.StandaloneInMemProcessEngineConfiguration">
 
         <property name="history" value="audit"/>
         <property name="databaseSchemaUpdate" value="true"/>
         <property name="jobExecutorActivate" value="false"/>
         <property name="expressionManager">
-            <bean class="org.camunda.bpm.engine.test.mock.MockExpressionManager"/>
+            <bean class="org.cibseven.bpm.engine.test.mock.MockExpressionManager"/>
         </property>
         <property name="idGenerator">
-            <bean class="org.camunda.bpm.engine.impl.persistence.StrongUuidGenerator"/>
+            <bean class="org.cibseven.bpm.engine.impl.persistence.StrongUuidGenerator"/>
         </property>
 
     </bean>

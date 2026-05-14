@@ -1,10 +1,10 @@
-package org.camunda.bpm.scenario.test.waitstates;
+package org.cibseven.community.scenario.test.waitstates;
 
-import org.camunda.bpm.engine.test.Deployment;
-import org.camunda.bpm.scenario.Scenario;
-import org.camunda.bpm.scenario.act.MessageIntermediateCatchEventAction;
-import org.camunda.bpm.scenario.delegate.EventSubscriptionDelegate;
-import org.camunda.bpm.scenario.test.AbstractTest;
+import org.cibseven.bpm.engine.test.Deployment;
+import org.cibseven.community.scenario.Scenario;
+import org.cibseven.community.scenario.act.MessageIntermediateCatchEventAction;
+import org.cibseven.community.scenario.delegate.EventSubscriptionDelegate;
+import org.cibseven.community.scenario.test.AbstractTest;
 import org.junit.Test;
 
 import static org.mockito.Mockito.*;

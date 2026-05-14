@@ -1,12 +1,12 @@
-import org.camunda.bpm.engine.test.Deployment;
-import org.camunda.bpm.engine.test.ProcessEngineRule;
-import org.camunda.bpm.scenario.ProcessScenario;
-import org.camunda.bpm.scenario.report.junit.ProcessEngineRuleWithReporting;
+import org.cibseven.bpm.engine.test.Deployment;
+import org.cibseven.bpm.engine.test.ProcessEngineRule;
+import org.cibseven.community.scenario.ProcessScenario;
+import org.cibseven.community.scenario.report.junit.ProcessEngineRuleWithReporting;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
-import static org.camunda.bpm.scenario.Scenario.run;
+import static org.cibseven.community.scenario.Scenario.run;
 import static org.mockito.Mockito.*;
 
 /**

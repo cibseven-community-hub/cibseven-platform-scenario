@@ -1,0 +1,88 @@
+package org.cibseven.community.scenario.test.waitstates;
+
+import org.cibseven.bpm.engine.test.Deployment;
+import org.cibseven.community.scenario.Scenario;
+import org.cibseven.community.scenario.act.ReceiveTaskAction;
+import org.cibseven.community.scenario.delegate.EventSubscriptionDelegate;
+import org.cibseven.community.scenario.test.AbstractTest;
+import org.junit.Test;
+
+import static org.mockito.Mockito.*;
+
+/**
+ * @author Martin Schimak
+ */
+public class ReceiveTaskWithMessageSubscriptionTest extends AbstractTest {
+
+  @Test
+  @Deployment(resources = {"org/camunda/bpm/scenario/test/waitstates/ReceiveTaskTest.bpmn"})
+  public void testReceiveMessage() {
+
+    when(scenario.waitsAtReceiveTask("ReceiveTask")).thenReturn(new ReceiveTaskAction() {
+      @Override
+      public void execute(EventSubscriptionDelegate messageEventSubscription) {
+        messageEventSubscription.receive();
+      }
+    });
+
+    Scenario.run(scenario).startByKey("ReceiveTaskTest").execute();
+
+    verify(scenario, times(1)).hasFinished("ReceiveTask");
+    verify(scenario, times(1)).hasFinished("EndEvent");
+
+  }
+
+  @Test
+  @Deployment(resources = {"org/camunda/bpm/scenario/test/waitstates/ReceiveTaskTest.bpmn"})
+  public void testDoNothing() {
+
+    when(scenario.waitsAtReceiveTask("ReceiveTask")).thenReturn(new ReceiveTaskAction() {
+      @Override
+      public void execute(EventSubscriptionDelegate messageEventSubscription) {
+        // Deal with messageEventSubscription but do nothing here
+      }
+    });
+
+    Scenario.run(scenario).startByKey("ReceiveTaskTest").execute();
+
+    verify(scenario, times(1)).hasStarted("ReceiveTask");
+    verify(scenario, never()).hasFinished("ReceiveTask");
+    verify(scenario, never()).hasFinished("EndEvent");
+
+  }
+
+  @Test(expected = AssertionError.class)
+  @Deployment(resources = {"org/camunda/bpm/scenario/test/waitstates/ReceiveTaskTest.bpmn"})
+  public void testDoNotDealWithMessageEvent() {
+
+    Scenario.run(scenario).startByKey("ReceiveTaskTest").execute();
+
+  }
+
+  @Test
+  @Deployment(resources = {"org/camunda/bpm/scenario/test/waitstates/ReceiveTaskTest.bpmn"})
+  public void testWhileOtherProcessInstanceIsRunning() {
+
+    when(scenario.waitsAtReceiveTask("ReceiveTask")).thenReturn(new ReceiveTaskAction() {
+      @Override
+      public void execute(EventSubscriptionDelegate messageEventSubscription) {
+        messageEventSubscription.receive();
+      }
+    });
+
+    when(otherScenario.waitsAtReceiveTask("ReceiveTask")).thenReturn(new ReceiveTaskAction() {
+      @Override
+      public void execute(EventSubscriptionDelegate messageEventSubscription) {
+      }
+    });
+
+    Scenario.run(otherScenario).startByKey("ReceiveTaskTest").execute();
+    Scenario.run(scenario).startByKey("ReceiveTaskTest").execute();
+
+    verify(scenario, times(1)).hasFinished("ReceiveTask");
+    verify(scenario, times(1)).hasFinished("EndEvent");
+    verify(otherScenario, never()).hasFinished("ReceiveTask");
+
+  }
+
+}

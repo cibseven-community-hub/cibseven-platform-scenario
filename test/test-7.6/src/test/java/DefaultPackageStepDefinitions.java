@@ -1,10 +1,10 @@
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.camunda.bpm.engine.test.Deployment;
-import org.camunda.bpm.scenario.ProcessScenario;
+import org.cibseven.bpm.engine.test.Deployment;
+import org.cibseven.community.scenario.ProcessScenario;
 
-import static org.camunda.bpm.scenario.Scenario.run;
+import static org.cibseven.community.scenario.Scenario.run;
 import static org.mockito.Mockito.*;
 
 /**

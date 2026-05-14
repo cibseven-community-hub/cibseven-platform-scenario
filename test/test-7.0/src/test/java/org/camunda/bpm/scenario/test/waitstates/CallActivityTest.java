@@ -1,11 +1,11 @@
-package org.camunda.bpm.scenario.test.waitstates;
+package org.cibseven.community.scenario.test.waitstates;
 
-import org.camunda.bpm.engine.test.Deployment;
-import org.camunda.bpm.scenario.ProcessScenario;
-import org.camunda.bpm.scenario.Scenario;
-import org.camunda.bpm.scenario.act.UserTaskAction;
-import org.camunda.bpm.scenario.delegate.TaskDelegate;
-import org.camunda.bpm.scenario.test.AbstractTest;
+import org.cibseven.bpm.engine.test.Deployment;
+import org.cibseven.community.scenario.ProcessScenario;
+import org.cibseven.community.scenario.Scenario;
+import org.cibseven.community.scenario.act.UserTaskAction;
+import org.cibseven.community.scenario.delegate.TaskDelegate;
+import org.cibseven.community.scenario.test.AbstractTest;
 import org.junit.Test;
 import org.mockito.Mock;
 

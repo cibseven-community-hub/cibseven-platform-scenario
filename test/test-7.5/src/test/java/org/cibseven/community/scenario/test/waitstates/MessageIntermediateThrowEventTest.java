@@ -1,0 +1,85 @@
+package org.cibseven.community.scenario.test.waitstates;
+
+import org.cibseven.bpm.engine.test.Deployment;
+import org.cibseven.community.scenario.Scenario;
+import org.cibseven.community.scenario.act.MessageIntermediateThrowEventAction;
+import org.cibseven.community.scenario.delegate.ExternalTaskDelegate;
+import org.cibseven.community.scenario.test.AbstractTest;
+import org.junit.Test;
+
+import static org.mockito.Mockito.*;
+
+/**
+ * @author Martin Schimak
+ */
+@Deployment(resources = {"org/camunda/bpm/scenario/test/waitstates/MessageIntermediateThrowEventTest.bpmn"})
+public class MessageIntermediateThrowEventTest extends AbstractTest {
+
+  @Test
+  public void testCompleteTask() {
+
+    when(scenario.waitsAtMessageIntermediateThrowEvent("MessageIntermediateThrowEvent")).thenReturn(new MessageIntermediateThrowEventAction() {
+      @Override
+      public void execute(ExternalTaskDelegate externalTask) {
+        externalTask.complete();
+      }
+    });
+
+    Scenario.run(scenario).startByKey("MessageIntermediateThrowEventTest").execute();
+
+    verify(scenario, times(1)).hasCompleted("MessageIntermediateThrowEvent");
+    verify(scenario, times(1)).hasFinished("EndEvent");
+
+  }
+
+  @Test
+  public void testDoNothing() {
+
+    when(scenario.waitsAtMessageIntermediateThrowEvent("MessageIntermediateThrowEvent")).thenReturn(new MessageIntermediateThrowEventAction() {
+      @Override
+      public void execute(ExternalTaskDelegate externalTask) {
+        // Deal with externalTask but do nothing here
+      }
+    });
+
+    Scenario.run(scenario).startByKey("MessageIntermediateThrowEventTest").execute();
+
+    verify(scenario, times(1)).hasStarted("MessageIntermediateThrowEvent");
+    verify(scenario, never()).hasFinished("MessageIntermediateThrowEvent");
+    verify(scenario, never()).hasFinished("EndEvent");
+
+  }
+
+  @Test(expected = AssertionError.class)
+  public void testDoNotDealWithTask() {
+
+    Scenario.run(scenario).startByKey("MessageIntermediateThrowEventTest").execute();
+
+  }
+
+  @Test
+  public void testWhileOtherProcessInstanceIsRunning() {
+
+    when(scenario.waitsAtMessageIntermediateThrowEvent("MessageIntermediateThrowEvent")).thenReturn(new MessageIntermediateThrowEventAction() {
+      @Override
+      public void execute(ExternalTaskDelegate externalTask) {
+        externalTask.complete();
+      }
+    });
+
+    when(otherScenario.waitsAtMessageIntermediateThrowEvent("MessageIntermediateThrowEvent")).thenReturn(new MessageIntermediateThrowEventAction() {
+      @Override
+      public void execute(ExternalTaskDelegate externalTask) {
+      }
+    });
+
+    Scenario.run(otherScenario).startByKey("MessageIntermediateThrowEventTest").execute();
+    Scenario.run(scenario).startByKey("MessageIntermediateThrowEventTest").execute();
+
+    verify(scenario, times(1)).hasCompleted("MessageIntermediateThrowEvent");
+    verify(scenario, times(1)).hasFinished("EndEvent");
+    verify(otherScenario, never()).hasCompleted("MessageIntermediateThrowEvent");
+
+  }
+
+}

@@ -2,12 +2,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.camunda.bpm.extension.scenario</groupId>
-    <artifactId>camunda-platform-scenario-runner</artifactId>
+    <groupId>org.cibseven.community.scenario</groupId>
+    <artifactId>cibseven-platform-scenario-runner</artifactId>
 
     <url>https://github.com/camunda-community-hub/camunda-platform-scenario</url>
 
-    <description>Camunda Platform Scenarios allow you to specify the actions
+    <description>CIB seven Platform Scenarios allow you to specify the actions
         needed at process wait states before you start the process run. As a
         consequence, writing process tests becomes "behavioral" as well as
         easier and faster than ever before. Refactoring and changing large
@@ -16,17 +16,17 @@
     </description>
 
     <parent>
-        <groupId>org.camunda.bpm.extension.scenario.project</groupId>
-        <artifactId>camunda-platform-scenario-root</artifactId>
+        <groupId>org.cibseven.community.scenario.project</groupId>
+        <artifactId>cibseven-platform-scenario-root</artifactId>
         <version>2.0.0-SNAPSHOT</version>
     </parent>
 
     <dependencies>
 
         <dependency>
-            <groupId>org.camunda.bpm</groupId>
-            <artifactId>camunda-engine</artifactId>
-            <version>7.15.0</version> <!-- compile against explicitly set version -->
+            <groupId>org.cibseven.bpm</groupId>
+            <artifactId>cibseven-engine</artifactId>
+            <version>${project.version}</version> <!-- compile against explicitly set version -->
             <scope>provided</scope>
         </dependency>
 
