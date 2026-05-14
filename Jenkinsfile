@@ -9,6 +9,7 @@ import de.cib.pipeline.library.MavenProjectInformation
 import groovy.transform.Field
 
 @Field MavenProjectInformation mavenProjectInformation = null
+@Field String mavenLocalRepoRedirected = null
 @Field Map pipelineParams = [
     pom: ConstantsInternal.DEFAULT_MAVEN_POM_PATH,
     mvnContainerName: Constants.MAVEN_JDK_17_CONTAINER,
@@ -230,6 +231,26 @@ pipeline {
                 }
             }
         }
+    }
+}
+
+def getLocalJobRepo(String jobName, boolean usePrivate) {
+    // return existing value if it is already set
+    if (mavenLocalRepoRedirected != null && mavenLocalRepoRedirected.endsWith(getJobFolder(jobName))) {
+        return mavenLocalRepoRedirected
+    }
+
+    mavenLocalRepoRedirected = getMavenRepository()
+    if (usePrivate) {
+       mavenLocalRepoRedirected = mavenLocalRepoRedirected + "/cibseven-install-dir/" + getJobFolder(jobName)
+    }
+    return mavenLocalRepoRedirected
+}
+
+def getMavenRepository() {
+    withMaven(options: []) {
+        def mavenRepo = sh(script: 'mvn help:evaluate -Dexpression=settings.localRepository -q -DforceStdout', returnStdout: true).trim()
+        return mavenRepo
     }
 }
 
