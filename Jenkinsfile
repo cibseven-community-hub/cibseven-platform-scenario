@@ -34,6 +34,11 @@ pipeline {
             description: "  └─ 🔨 Build feature branch"
         )
         booleanParam(
+            name: 'USE_PRIVATE_REPO',
+            defaultValue: true,
+            description: "  └─ 🧰 Use private local repository"
+        )
+        booleanParam(
             name: 'DEPLOY_TO_ARTIFACTS',
             defaultValue: false,
             description: '└─ 📦 Deploy to artifacts.cibseven.org'
@@ -43,6 +48,14 @@ pipeline {
             defaultValue: false,
             description: '└─ 📤 Deploy artifacts to Maven Central'
         )
+    }
+
+    environment {
+        MAVEN_LOCAL_REPO = getLocalJobRepo(env.JOB_NAME, params.USE_PRIVATE_REPO)
+        // set bigger timeout to get rid of the maven issue with file locks: https://github.com/apache/maven/issues/9049
+        MAVEN_LOCAL_REPO_OPTS = "-Dmaven.repo.local=${env.MAVEN_LOCAL_REPO} -Daether.connector.basic.threads=4 -Daether.metadataResolver.threads=4 -Daether.syncContext.named.time=120"
+        // set maven options only if params.USE_PRIVATE_REPO is true, otherwise use shared repo as usual
+        MAVEN_OPTS = "${params.USE_PRIVATE_REPO == true ? env.MAVEN_LOCAL_REPO_OPTS : ""}"
     }
 
     options {
@@ -87,6 +100,12 @@ pipeline {
                     // pipeline as root but repository being owned by user 1000. For more, see
                     // https://stackoverflow.com/questions/72978485/git-submodule-update-failed-with-fatal-detected-dubious-ownership-in-repositor
                     sh "git config --global --add safe.directory \$(pwd)"
+                }
+                script {
+                    // if use private repo then try to get a repo template from the pool if possible
+                    if (params.USE_PRIVATE_REPO) {
+                        moveMavenRepoFromPool("${env.MAVEN_LOCAL_REPO}")
+                    }
                 }
             }
         }
@@ -162,6 +181,11 @@ pipeline {
         always {
             script {
                 echo 'End of the build'
+                
+                // move back to the repo pool to reuse
+                if (params.USE_PRIVATE_REPO) {
+                    moveMavenRepoToPool("${env.MAVEN_LOCAL_REPO}")
+                }
             }
         }
 
