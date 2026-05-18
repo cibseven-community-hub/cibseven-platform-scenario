@@ -179,13 +179,13 @@ pipeline {
 
         unstable {
             script {
-                log.warning '⚠️ Build unstable'
+                echo '⚠️ Build unstable'
             }
         }
 
         failure {
             script {
-                log.warning '❌ Build failed'
+                echo '❌ Build failed'
                 if (env.BRANCH_NAME == pipelineParams.primaryBranch) {
                     notifyResult(
                         office365WebhookId: pipelineParams.office365WebhookId,
