@@ -3,6 +3,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>cibseven-platform-scenario-test</artifactId>
+    <name>CIB seven Platform Scenario Test</name>
+    <description>CIB seven Platform Scenario Test</description>
     <packaging>pom</packaging>
 
     <parent>
