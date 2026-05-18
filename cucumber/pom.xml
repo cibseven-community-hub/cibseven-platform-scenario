@@ -12,6 +12,9 @@
     <groupId>org.cibseven.community.scenario</groupId>
     <artifactId>cibseven-platform-scenario-cucumber</artifactId> <!-- TODO Consider cibseven-platform-cucumber -->
 
+    <name>CIB seven Platform Scenario Cucumber</name>
+    <description>CIB seven Platform Scenario Cucumber</description>
+    
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>

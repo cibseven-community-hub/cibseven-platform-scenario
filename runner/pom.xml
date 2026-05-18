@@ -7,6 +7,8 @@
 
     <url>https://github.com/cibseven-community-hub/cibseven-platform-scenario</url>
 
+
+    <name>CIB seven Platform Scenario Runner</name>
     <description>CIB seven Platform Scenarios allow you to specify the actions
         needed at process wait states before you start the process run. As a
         consequence, writing process tests becomes "behavioral" as well as
