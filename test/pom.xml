@@ -8,7 +8,7 @@
     <parent>
         <groupId>org.cibseven.community.scenario.project</groupId>
         <artifactId>cibseven-platform-scenario-root</artifactId>
-        <version>2.0.0</version>
+        <version>2.1.0</version>
     </parent>
 
     <profiles>
@@ -29,6 +29,26 @@
                 <property>
                     <name>cibseven-platform-version</name>
                     <value>2.0.0</value>
+                </property>
+            </activation>
+        </profile>
+
+        <profile>
+            <id>2.1.0</id>
+            <modules>
+                <module>test-7.0</module>
+                <module>test-7.1</module>
+                <module>test-7.4</module>
+                <module>test-7.5</module>
+                <module>test-7.6</module>
+                <module>test-7.7</module>
+                <module>test-7.10</module>
+                <module>test-7.12</module>
+            </modules>
+            <activation>
+                <property>
+                    <name>cibseven-platform-version</name>
+                    <value>2.1.0</value>
                 </property>
             </activation>
         </profile>

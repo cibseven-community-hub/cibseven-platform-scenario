@@ -160,13 +160,13 @@ with **all versions of CIB seven Platform** since 1.0 up to the most recent and 
 
 **Heads up!:** camunda-bpm-assert-scenario was deprecated in favour of camunda-platform-scenario-runner
 
-**Stable version 2.0.0**
+**Stable version 2.1.0**
 
 ```xml  
 <dependency>
     <groupId>org.cibseven.community.scenario</groupId>
     <artifactId>cibseven-platform-scenario-runner</artifactId>
-    <version>2.0.0</version>
+    <version>2.1.0</version>
     <scope>test</scope>
 </dependency>
 ```
