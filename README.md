@@ -1,5 +1,5 @@
 [![CIB seven 2.1.0](https://img.shields.io/badge/CIB%20seven-2.1.0-orange.svg)](https://docs.cibseven.org/manual/2.1/)
-[![Maven Central](https://img.shields.io/maven-central/v/org.cibseven.community/cibseven-bpm-jgiven?label=Maven%20Central)](https://central.sonatype.com/artifact/org.cibseven.community/cibseven-bpm-jgiven)
+[![Maven Central](https://img.shields.io/maven-central/v/org.cibseven.community.scenario/cibseven-platform-scenario-runner?label=Maven%20Central)](https://central.sonatype.com/artifact/org.cibseven.community.scenario/cibseven-platform-scenario-runner)
 
 
 # CIB seven Platform <strong>Scenario</strong><a href="https://maven-badges.herokuapp.com/maven-central/org.cibseven.community.scenario/camunda-platform-scenario-runner"></a>
